@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.jrdatabasetools.dbworkbench.examples</groupId>
+		<artifactId>parent</artifactId>
+		<version>2.5.23</version>
+	</parent>
+
+	<artifactId>spring_http_remoting</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>spring_http_remoting_server</module>
+    <module>spring_http_remoting_client</module>
+	</modules>
+</project>

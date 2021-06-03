@@ -1,0 +1,15 @@
+
+Oracle Repository
+- This example is configured to use the Oracle maven repository.
+
+To use the Oracle repository you have to register at Oracle to get access to it.
+If you don't want to use is, add the following Java libraries to the project.
+- Oracle JDBC driver : ojdbc6.jar or ojdbc7.jar
+- Universal Connection Pool : ucp.jar
+- Oracle 11g : classgen.jar, ojcr.jar, oraclexsql.jar, xdb.jar, xml.jar, xml2.jar, xmlcomp.jar, xmlcomp2.jar, xmlmesg.jar, xmlparserv2_jaxp_services.jar, xmlparserv2_sans_jaxp_services.jar, xmlparserv2.jar, xqjapi.jar, xqjori.jar, xquery.jar, xschema.jar, xsqlserializers.jar, xsu12.jar
+- Oracle 12c : xdb6.jar, orai18n.jar, xmlparserv2.jar, oraclepki.jar, osdt_cert.jar, osdt_core.jar, ons.jar
+- Update pom.xml
+
+Modify the database connection settings in the PL/SQL Enterprise Workbench and the resource file example.properties.
+
+Have fun.

@@ -1,0 +1,13 @@
+
+Oracle Repository
+- This example is configured to use the Oracle maven repository.
+
+To use the Oracle repository you have to register at Oracle to get access to it.
+If you don't want to use is, add the following Java libraries to the project.
+- Oracle JDBC driver : ojdbc6.jar or ojdbc7.jar
+- Universal Connection Pool : ucp.jar
+- Update pom.xml
+
+Modify the database connection settings in the PL/SQL Enterprise Workbench and the resource file example.properties.
+
+Have fun.

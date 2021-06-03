@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+  <deployment>
+    <dependencies>
+      <module name="com.oracle.jdbc" />
+    </dependencies>
+    <resources>
+        <resource-root path="ojdbc8.jar"/>
+    </resources>
+   </deployment>
+</jboss-deployment-structure>
