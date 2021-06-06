@@ -17,11 +17,18 @@ public class BulkCollectionPlSqlRecordFactoryApi {
   public static void main(String[] args)
   {
     try {
+      // set database credentials and configuration parameters
+      System.setProperty("dbw_examples.url", "jdbc:oracle:thin:@192.168.0.102:1521/orcl");
+      System.setProperty("dbw_examples.username", "dbw_examples");
+      System.setProperty("dbw_examples.password", "dbw_examples");
+      System.setProperty("dbw_examples.poolsize.min", Integer.toString(3));
+      System.setProperty("dbw_examples.poolsize.max", Integer.toString(10));
+
       // getting the service
       BulkPlsqlRecordService service = ExamplesRPCFactory.getBulkPlsqlRecordService();
 
       // generating 50000 elements to transfer to the stored procedure 
-      List<BulkPlsqlRecordTO.PlsqlRecord> list = new ArrayList<>();
+      List<BulkPlsqlRecordTO.PlsqlRecord> list = new ArrayList<>(ELEMENTS);
       for (int i = 0; i < ELEMENTS; i++) {
         BulkPlsqlRecordTO.PlsqlRecord o = new BulkPlsqlRecordTO.PlsqlRecord();
         o.d = new Date(System.currentTimeMillis() + (long) (Math.random() * Integer.MAX_VALUE));
@@ -37,7 +44,13 @@ public class BulkCollectionPlSqlRecordFactoryApi {
       service.doit(list);
 
       // print out throughput
-      System.out.println(tc.perSecond("collection of pl/sql record element bulk performance", ELEMENTS));
+      System.out.println(tc.perSecond("collection of pl/sql record element bulk performance (first call)", ELEMENTS));
+
+      // calling the stored procedure
+      service.doit(list);
+
+      // print out throughput
+      System.out.println(tc.perSecond("collection of pl/sql record element bulk performance (second call)", ELEMENTS));
     }
     catch (Exception e) {
       e.printStackTrace();

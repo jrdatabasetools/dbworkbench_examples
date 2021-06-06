@@ -23,7 +23,7 @@ public class BulkCollectionObjectsFactoryApiTest {
     BulkCollectionObjectService service = ExamplesRPCFactory.getBulkCollectionObjectService();
 
     // generating 50000 elements to transfer to the stored procedure 
-    List<BulkObject> objectList = new ArrayList<BulkObject>();
+    List<BulkObject> objectList = new ArrayList<BulkObject>(ELEMENTS);
     for (int i = 0; i < ELEMENTS; i++) {
       BulkObject o = new BulkObject();
       o.d = new Date(System.currentTimeMillis() + (long) (Math.random() * Integer.MAX_VALUE));
@@ -39,6 +39,12 @@ public class BulkCollectionObjectsFactoryApiTest {
     service.call(objectList);
 
     // print out throughput
-    System.out.println(tc.perSecond("objects bulk performance", ELEMENTS));
+    System.out.println(tc.perSecond("objects bulk performance (first call)", ELEMENTS));
+
+    // calling the stored procedure
+    service.call(objectList);
+
+    // print out throughput
+    System.out.println(tc.perSecond("objects bulk performance (second call)", ELEMENTS));
   }
 }

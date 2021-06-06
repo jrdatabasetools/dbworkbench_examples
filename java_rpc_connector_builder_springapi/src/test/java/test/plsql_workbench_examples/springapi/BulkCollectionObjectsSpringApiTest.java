@@ -45,6 +45,12 @@ public class BulkCollectionObjectsSpringApiTest {
     bulkCollectionObjectService.call(objectList);
 
     // print out throughput
-    System.out.println(tc.perSecond("objects bulk performance", ELEMENTS));
+    System.out.println(tc.perSecond("objects bulk performance (first call)", ELEMENTS));
+
+    // calling the stored procedure
+    bulkCollectionObjectService.call(objectList);
+
+    // print out throughput
+    System.out.println(tc.perSecond("objects bulk performance (second call)", ELEMENTS));
   }
 }

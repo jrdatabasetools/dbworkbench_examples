@@ -47,6 +47,12 @@ public class BulkCollectionPlSqlTableSpringApiTest {
     bulkPlsqlTableService.bulkPlsqlTable(numberList, dateList, stringList);
 
     // print out throughput
-    System.out.println(tc.perSecond("pl/sql bulk performance", ELEMENTS));
+    System.out.println(tc.perSecond("pl/sql bulk performance (first call)", ELEMENTS));
+
+    // calling the stored procedure
+    bulkPlsqlTableService.bulkPlsqlTable(numberList, dateList, stringList);
+
+    // print out throughput
+    System.out.println(tc.perSecond("pl/sql bulk performance (second call)", ELEMENTS));
   }
 }

@@ -45,6 +45,12 @@ public class BulkCollectionPlSqlRecordSpringApiTest {
     bulkPlsqlRecordService.doit(list);
 
     // print out throughput
-    System.out.println(tc.perSecond("collection of pl/sql record element bulk performance", ELEMENTS));
+    System.out.println(tc.perSecond("collection of pl/sql record element bulk performance (first call)", ELEMENTS));
+
+    // calling the stored procedure
+    bulkPlsqlRecordService.doit(list);
+
+    // print out throughput
+    System.out.println(tc.perSecond("collection of pl/sql record element bulk performance (second call)", ELEMENTS));
   }
 }

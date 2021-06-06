@@ -15,6 +15,13 @@ public class CollectionsOfPlSqlRecordsFactoryApi {
   public static void main(String[] args)
   {
     try {
+      // set database credentials and configuration parameters
+      System.setProperty("dbw_examples.url", "jdbc:oracle:thin:@192.168.0.102:1521/orcl");
+      System.setProperty("dbw_examples.username", "dbw_examples");
+      System.setProperty("dbw_examples.password", "dbw_examples");
+      System.setProperty("dbw_examples.poolsize.min", Integer.toString(3));
+      System.setProperty("dbw_examples.poolsize.max", Integer.toString(10));
+
       // get the service
       CollectionOfPlsqlRecordsService service = ExamplesRPCFactory.getCollectionOfPlsqlRecordsService();
 

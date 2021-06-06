@@ -12,7 +12,7 @@
 	<inceptionYear>2017-2021</inceptionYear>
 
 	<properties>
-		<!-- database credentials and config parameters -->
+		<!-- database credentials and configuration parameterss -->
 		<dbw_examples.url>jdbc:oracle:thin:@192.168.0.102:1521/orcl</dbw_examples.url>
 		<dbw_examples.username>dbw_examples</dbw_examples.username>
 		<dbw_examples.password>dbw_examples</dbw_examples.password>

@@ -10,7 +10,7 @@ public class ServerInfo {
   {
     try {
       int diff = 10;
-
+      
       // get the service
       ServerInfoService service = ExamplesRPCFactory.getServerInfoService();
 

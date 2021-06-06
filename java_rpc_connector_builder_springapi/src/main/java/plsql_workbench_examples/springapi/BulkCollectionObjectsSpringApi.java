@@ -23,6 +23,13 @@ public class BulkCollectionObjectsSpringApi {
 
   public static void main(String[] args)
   {
+    // set database credentials and configuration parameters
+    System.setProperty("dbw_examples.url", "jdbc:oracle:thin:@192.168.0.102:1521/orcl");
+    System.setProperty("dbw_examples.username", "dbw_examples");
+    System.setProperty("dbw_examples.password", "dbw_examples");
+    System.setProperty("dbw_examples.poolsize.min", Integer.toString(3));
+    System.setProperty("dbw_examples.poolsize.max", Integer.toString(10));
+
     // Register Spring Beans, Spring Context and call demo method 
     try (GenericApplicationContext ctx = BaseSpringConfig.getCtx(BulkCollectionObjectsSpringApi.class)) {
       ctx.getBean(BulkCollectionObjectsSpringApi.class).runDemo();
@@ -33,7 +40,7 @@ public class BulkCollectionObjectsSpringApi {
   {
     try {
       // generating 50000 elements to transfer to the stored procedure 
-      List<BulkObject> objectList = new ArrayList<>();
+      List<BulkObject> objectList = new ArrayList<>(ELEMENTS);
       for (int i = 0; i < ELEMENTS; i++) {
         BulkObject o = new BulkObject();
         o.setD(new Date(System.currentTimeMillis() + (long) (Math.random() * Integer.MAX_VALUE)));
@@ -49,7 +56,13 @@ public class BulkCollectionObjectsSpringApi {
       bulkCollectionObjectService.call(objectList);
 
       // print out throughput
-      System.out.println(tc.perSecond("objects bulk performance", ELEMENTS));
+      System.out.println(tc.perSecond("objects bulk performance (first call)", ELEMENTS));
+
+      // calling the stored procedure
+      bulkCollectionObjectService.call(objectList);
+
+      // print out throughput
+      System.out.println(tc.perSecond("objects bulk performance (second call)", ELEMENTS));
     }
     catch (Exception e) {
       e.printStackTrace();

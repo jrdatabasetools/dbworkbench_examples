@@ -38,6 +38,12 @@ public class BulkCollectionScalarFactoryApiTest {
     service.call(numberList, dateList, stringList);
 
     // print out throughput
-    System.out.println(tc.perSecond("scalar bulk performance", ELEMENTS));
+    System.out.println(tc.perSecond("scalar bulk performance (first call)", ELEMENTS));
+
+    // calling the stored procedure
+    service.call(numberList, dateList, stringList);
+
+    // print out throughput
+    System.out.println(tc.perSecond("scalar bulk performance (second call)", ELEMENTS));
   }
 }
