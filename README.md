@@ -1,6 +1,6 @@
 # PL/SQL Connector Builder Examples
 
-These examples demonstrates all data types and PL/SQL Connector Builder used by [PL/SQL Enterprise Workbench](http://jr-database-tools.com).
+These examples demonstrates all data types and PL/SQL Connector Builders used by [PL/SQL Enterprise Workbench](http://jr-database-tools.com).
 
 All examples contain a normal executable main Java program and a JUnit test case.
 
