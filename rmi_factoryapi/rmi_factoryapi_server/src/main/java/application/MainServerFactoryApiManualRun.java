@@ -26,7 +26,6 @@ public class MainServerFactoryApiManualRun {
   public static DataSource getDataSource() throws Exception {
     PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
     poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
-
     poolDataSource.setURL("jdbc:oracle:thin:@192.168.0.102:1521/orcl");
     poolDataSource.setUser("dbw_examples");
     poolDataSource.setPassword("dbw_examples");

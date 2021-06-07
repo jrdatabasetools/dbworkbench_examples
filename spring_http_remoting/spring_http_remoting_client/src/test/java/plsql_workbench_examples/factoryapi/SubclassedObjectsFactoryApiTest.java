@@ -14,8 +14,10 @@ import transferobject.DerivedObject;
 
 public class SubclassedObjectsFactoryApiTest {
   @Test
-  public void testSubclassedObject() throws Exception
-  {
+  public void testSubclassedObject() throws Exception {
+    // uncomment the next line for local tests
+    // System.setProperty("baseURL", "http://localhost:8080");
+
     // Initialize factory class once - after that all services are accessible calling throw the static factory api.
     try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ExamplesRPCFactory.class)) {
       int diff = 10;
