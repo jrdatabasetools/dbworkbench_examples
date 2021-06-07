@@ -1,6 +1,6 @@
 # PL/SQL Connector Builder Examples
 
-These examples demonstrates all data types and PL/SQL Connector Builders used by [PL/SQL Enterprise Workbench](http://jr-database-tools.com).
+These examples demonstrates all data types and PL/SQL Connector Builders used by [PL/SQL Enterprise Workbench](https://www.jr-database-tools.com).
 
 All examples contain a normal executable main Java program and a JUnit test case.
 
@@ -41,7 +41,7 @@ The server and the client can be run as Java main programs without using Docker 
 3. Running the Java main programs in each module
 
 ## Using the PL/SQL Enterprise Workbench
-- Use the Eclipse IDE and install the [PL/SQL Enterprise Workbench](http://jr-database-tools.com).
+- Use the Eclipse IDE and install the [PL/SQL Enterprise Workbench](https://www.jr-database-tools.com).
 - Import this **dbworkbench_example**  project and switch to the PL/SQL Enterprise Workbench perspective.
 - From this perspective you can configure the Oracle database connection and compile all PL/SQL types and run the PL/SQL Connector Builder manually
 - Running single scripts are not possible - to create a table and a user you have to use other tools like SQL-Developer.
