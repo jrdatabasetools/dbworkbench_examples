@@ -53,9 +53,14 @@ public class MainServerSpringApi {
     poolDataSource.setURL(System.getenv("db.url"));
     poolDataSource.setUser(System.getenv("db.username"));
     poolDataSource.setPassword(System.getenv("db.password"));
-    poolDataSource.setMinPoolSize(1);
+    poolDataSource.setInitialPoolSize(1);
+    poolDataSource.setMinPoolSize(2);
     poolDataSource.setMaxPoolSize(10);
-    poolDataSource.setLoginTimeout(5);
+    poolDataSource.setLoginTimeout(10);
+    poolDataSource.setInactiveConnectionTimeout(30);
+    poolDataSource.setTimeoutCheckInterval(15);
+    poolDataSource.setValidateConnectionOnBorrow(true);
+    poolDataSource.setConnectionWaitTimeout(60);
     return poolDataSource;
   }
 }

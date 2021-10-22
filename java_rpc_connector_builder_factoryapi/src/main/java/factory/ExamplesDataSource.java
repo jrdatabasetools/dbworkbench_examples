@@ -18,8 +18,14 @@ class ExamplesDataSource {
       poolDataSource.setURL(System.getProperty("dbw_examples.url"));
       poolDataSource.setUser(System.getProperty("dbw_examples.username"));
       poolDataSource.setPassword(System.getProperty("dbw_examples.password"));
-      poolDataSource.setMinPoolSize(Integer.parseInt(System.getProperty("dbw_examples.poolsize.min")));
-      poolDataSource.setMaxPoolSize(Integer.parseInt(System.getProperty("dbw_examples.poolsize.max")));
+      poolDataSource.setInitialPoolSize(1);
+      poolDataSource.setMinPoolSize(2);
+      poolDataSource.setMaxPoolSize(10);
+      poolDataSource.setLoginTimeout(10);
+      poolDataSource.setInactiveConnectionTimeout(30);
+      poolDataSource.setTimeoutCheckInterval(15);
+      poolDataSource.setValidateConnectionOnBorrow(true);
+      poolDataSource.setConnectionWaitTimeout(60);
       dataSource = poolDataSource;
     }
     return dataSource;

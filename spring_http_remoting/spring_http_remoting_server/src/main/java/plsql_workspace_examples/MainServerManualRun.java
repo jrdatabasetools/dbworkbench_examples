@@ -25,9 +25,14 @@ public class MainServerManualRun {
     poolDataSource.setURL("jdbc:oracle:thin:@192.168.0.102:1521/orcl");
     poolDataSource.setUser("dbw_examples");
     poolDataSource.setPassword("dbw_examples");
-    poolDataSource.setMinPoolSize(1);
+    poolDataSource.setInitialPoolSize(1);
+    poolDataSource.setMinPoolSize(2);
     poolDataSource.setMaxPoolSize(10);
-    poolDataSource.setLoginTimeout(5);
+    poolDataSource.setLoginTimeout(10);
+    poolDataSource.setInactiveConnectionTimeout(30);
+    poolDataSource.setTimeoutCheckInterval(15);
+    poolDataSource.setValidateConnectionOnBorrow(true);
+    poolDataSource.setConnectionWaitTimeout(60);
     return poolDataSource;
   }
 
