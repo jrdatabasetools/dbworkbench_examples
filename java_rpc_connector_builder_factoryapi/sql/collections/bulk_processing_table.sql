@@ -1,4 +1,6 @@
 
+drop table bulk_processing_table;
+
 create table bulk_processing_table
 (
 n    number not null,
