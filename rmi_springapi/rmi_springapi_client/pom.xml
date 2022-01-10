@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
 		<artifactId>rmi_springapi</artifactId>
-		<version>2.5.26</version>
+		<version>2.5.27</version>
 	</parent>
 
 	<artifactId>rmi_springapi_client</artifactId>
@@ -114,7 +114,7 @@
 							<arguments>
 								<argument>localhost</argument>
 								<argument>${ping.count.parameter}</argument>
-								<argument>10</argument>
+								<argument>20</argument>
 							</arguments>
 						</configuration>
 					</execution>
