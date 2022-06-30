@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Jan Richter, JR-Database-Tools GmbH, Germany, Hamburg, 2015-2021. All rights reserved.
+ * Copyright (c) Jan Richter, JR-Database-Tools GmbH, Germany, Hamburg, 2015-2022. All rights reserved.
  */
 
 package application;
