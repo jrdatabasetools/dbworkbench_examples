@@ -13,7 +13,7 @@ public class PlSqlRecordFactoryApi {
   {
     try {
       // set database credentials and configuration parameters
-      System.setProperty("dbw_examples.url", "jdbc:oracle:thin:@192.168.0.102:1521/orcl");
+      System.setProperty("dbw_examples.url", "jdbc:oracle:thin:@192.168.0.109:1521/orcl");
       System.setProperty("dbw_examples.username", "dbw_examples");
       System.setProperty("dbw_examples.password", "dbw_examples");
 

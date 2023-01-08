@@ -13,7 +13,7 @@ public class BinaryTypesWrapperApi {
     try {
       Class.forName("oracle.jdbc.driver.OracleDriver");
 
-      try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.102:1521/orcl",
+      try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.109:1521/orcl",
                                                                "dbw_examples",
                                                                "dbw_examples"))
       {

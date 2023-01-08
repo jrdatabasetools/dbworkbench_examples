@@ -6,12 +6,22 @@
 	<parent>
 		<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
 		<artifactId>spring_http_remoting</artifactId>
-		<version>2.5.28</version>
+		<version>2.5.29</version>
 	</parent>
 
 	<artifactId>spring_http_remoting_client</artifactId>
 
 	<dependencies>
+    <!-- oracle -->
+    <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ojdbc8</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ucp</artifactId>
+    </dependency>
+
 		<!-- spring remoting -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -97,7 +107,7 @@
 								<argument>-d</argument>
 								<argument>-e</argument>
 								<!-- configure the database url here -->
-								<argument>db.url=jdbc:oracle:thin:@192.168.0.102:1521/orcl</argument>
+								<argument>db.url=jdbc:oracle:thin:@192.168.0.109:1521/orclpdb1</argument>
 								<argument>-e</argument>
 								<!-- configure the database username here -->
 								<argument>db.username=dbw_examples</argument>
