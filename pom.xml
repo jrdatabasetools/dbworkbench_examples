@@ -5,7 +5,7 @@
 
 	<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
 	<artifactId>parent</artifactId>
-	<version>2.5.29</version>
+	<version>2.5.31</version>
 	<packaging>pom</packaging>
 
 	<description>Examples of using PL/SQL Enterprise Workbench Connector Builders.</description>
@@ -21,9 +21,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- version dependencies -->
-		<connectorbuilder-maven-plugin_version>2.5.29</connectorbuilder-maven-plugin_version>
+		<connectorbuilder-maven-plugin_version>2.5.31</connectorbuilder-maven-plugin_version>
 
-		<com.oracle.database_version>21.7.0.0</com.oracle.database_version>
+		<com.oracle.database_version>21.8.0.0</com.oracle.database_version>
 
 		<javax.annotation-api_version>1.3.2</javax.annotation-api_version>
 
