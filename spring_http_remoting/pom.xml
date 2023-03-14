@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
 		<artifactId>parent</artifactId>
-		<version>2.5.31</version>
+		<version>2.5.32</version>
 	</parent>
 
 	<artifactId>spring_http_remoting</artifactId>
