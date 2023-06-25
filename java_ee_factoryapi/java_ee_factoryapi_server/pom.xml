@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
 		<artifactId>java_ee_factoryapi</artifactId>
-		<version>2.5.32</version>
+		<version>2.5.33</version>
 	</parent>
 
 	<artifactId>java_ee_factoryapi_server</artifactId>
@@ -16,7 +16,7 @@
 		<!-- oracle -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
+			<artifactId>ojdbc11</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -90,7 +90,7 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>com.oracle.database.jdbc</groupId>
-									<artifactId>ojdbc8</artifactId>
+									<artifactId>ojdbc11</artifactId>
 									<destFileName>ojdbc8.jar</destFileName>
 								</artifactItem>
 								<artifactItem>

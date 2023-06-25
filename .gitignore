@@ -1,6 +1,10 @@
-/bin/
 /target/
+/bin/
 /.settings/
 .classpath
-.project
-copy_sources.sh
+/.project
+/.idea/
+/*.iml
+/.DS_Store/
+/copy_sources.sh
+/.classpath/

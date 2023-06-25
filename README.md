@@ -4,6 +4,28 @@ These examples demonstrates all data types and PL/SQL Connector Builders used by
 
 All examples contain a normal executable main Java program and a JUnit test case.
 
+## Prerequisites
+
+### Installed Software
+
+- Java 11
+- Docker 
+- Maven 3.x
+
+### Oracle Database XE 21c
+
+Run **run_oracle.sh (bash)**, **run_oracle.ps1 (powershell)** or **run_oracle.cmd (Windows command line)** from the command line of the project root to start a preconfigured database. 
+
+- An Oracle 21c XE (Express Edition) will be downloaded as Docker image.
+- All Sql scripts in the folder **ora_db_startup** will be executed after startup.
+- About 5 GB will be downloaded and require about 12 GB in the docker registry.
+
+### Oracle Connection Info
+
+- The default password for the administration users SYS, SYSTEM and PDBADMIN are set to 'oracle'.
+- A preconfigured schema 'HR' identified by password 'hr' is created during setup.
+- Url to the schema 'HR' is 'jdbc:oracle:thin:@localhost:1521/xepdb1'
+
 ## Data Types Examples
 These examples demonstrates the use of all possible data types using the Java-RPC PL/SQL Connector Builder. The PL/SQL Connector Builder supports all typed data types of standard JDBC and Oracle JDBC Extensions.
 
