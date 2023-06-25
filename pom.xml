@@ -38,8 +38,8 @@
     <maven-ejb-plugin_version>3.2.1</maven-ejb-plugin_version>
     <maven-dependency-plugin_version>3.3.0</maven-dependency-plugin_version>
 
-    <org.springframework_version>5.3.23</org.springframework_version>
-    <org.springboot_version>2.7.3</org.springboot_version>
+    <org.springframework_version>5.3.28</org.springframework_version>
+    <org.springboot_version>2.7.13</org.springboot_version>
 
     <!-- Java compiler version -->
     <maven.compiler.target>11</maven.compiler.target>
