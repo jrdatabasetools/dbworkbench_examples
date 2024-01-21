@@ -3,31 +3,25 @@ package factory;
 
 import javax.sql.DataSource;
 
-import oracle.ucp.jdbc.PoolDataSource;
-import oracle.ucp.jdbc.PoolDataSourceFactory;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 class ExamplesDataSource {
+  private static HikariDataSource hikariDataSource;
+
   private ExamplesDataSource() {}
 
-  private static PoolDataSource dataSource;
-
-  static DataSource getDataSource() throws Exception {
-    if (dataSource == null) {
-      PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
-      poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
-      poolDataSource.setURL(System.getProperty("dbw_examples.url"));
-      poolDataSource.setUser(System.getProperty("dbw_examples.username"));
-      poolDataSource.setPassword(System.getProperty("dbw_examples.password"));
-      poolDataSource.setInitialPoolSize(1);
-      poolDataSource.setMinPoolSize(2);
-      poolDataSource.setMaxPoolSize(10);
-      poolDataSource.setLoginTimeout(10);
-      poolDataSource.setInactiveConnectionTimeout(30);
-      poolDataSource.setTimeoutCheckInterval(15);
-      poolDataSource.setValidateConnectionOnBorrow(true);
-      poolDataSource.setConnectionWaitTimeout(60);
-      dataSource = poolDataSource;
+  public static DataSource getDataSource() {
+    if (hikariDataSource == null) {
+      HikariConfig hkConfig = new HikariConfig();
+      hkConfig.setUsername(System.getProperty("dbw_examples.username"));
+      hkConfig.setPassword(System.getProperty("dbw_examples.password"));
+      hkConfig.setJdbcUrl(System.getProperty("dbw_examples.url"));
+      hkConfig.setMaximumPoolSize(16);
+      hkConfig.setMinimumIdle(2);
+      hikariDataSource = new HikariDataSource(hkConfig);
     }
-    return dataSource;
+
+    return hikariDataSource;
   }
 }

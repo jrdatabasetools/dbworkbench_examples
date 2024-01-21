@@ -1,4 +1,4 @@
-FROM ringcentral/maven:3.6.3-jdk11.0.7
+FROM openjdk:11
 WORKDIR /app
 COPY target/spring_http_remoting_server.war /app
 EXPOSE 8080

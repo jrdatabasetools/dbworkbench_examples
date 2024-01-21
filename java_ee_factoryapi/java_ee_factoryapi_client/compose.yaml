@@ -1,0 +1,17 @@
+services:
+  server:
+    image: java_ee_factoryapi_server:2.5.34
+    ports:
+      - 13456:8080
+    environment:
+      - db.username=dbw_examples
+      - db.password=dbw_examples
+      - db.host=oracle_db
+    networks:
+      - oracle_db_net
+    container_name: java_ee_factoryapi_server
+      
+networks:
+  oracle_db_net:
+    name: oracle_db_network
+    external: true

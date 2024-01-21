@@ -1,0 +1,19 @@
+services:
+  oracle_db:
+    image: dbw_ora_xe_21_3:2.5.34
+    networks:
+      - oracle_db_net
+    ports:
+      - 1521:1521
+    expose:
+      - 1521
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo 'SELECT 1/count(1) FROM USER_OBJECTS WHERE OBJECT_NAME = ''TIMESTAMP_TZ_PKG'' AND STATUS=''VALID'' AND OBJECT_TYPE=''PACKAGE BODY'';' | sqlplus dbw_examples/dbw_examples"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    container_name: oracle_db
+
+networks:
+  oracle_db_net:
+    name: oracle_db_network

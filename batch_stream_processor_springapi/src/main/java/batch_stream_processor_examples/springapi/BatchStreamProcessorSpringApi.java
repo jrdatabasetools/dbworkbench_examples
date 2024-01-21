@@ -12,8 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-import oracle.ucp.jdbc.PoolDataSource;
-import oracle.ucp.jdbc.PoolDataSourceFactory;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import service.BatchStreamProcessorService;
 import transferobject.BatchStreamProcessorTO;
 
@@ -29,7 +30,7 @@ public class BatchStreamProcessorSpringApi {
     System.setProperty("dbw_examples.url", "jdbc:oracle:thin:@192.168.0.109:1521/orcl");
     System.setProperty("dbw_examples.username", "dbw_examples");
     System.setProperty("dbw_examples.password", "dbw_examples");
-    
+
     // Register Spring Beans, Spring Context and call demo method 
     try (
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(BatchStreamProcessorSpringApi.class))
@@ -57,19 +58,12 @@ public class BatchStreamProcessorSpringApi {
 
   @Bean
   public DataSource getDataSource() throws Exception {
-    PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
-    poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
-    poolDataSource.setURL(System.getProperty("dbw_examples.url"));
-    poolDataSource.setUser(System.getProperty("dbw_examples.username"));
-    poolDataSource.setPassword(System.getProperty("dbw_examples.password"));
-    poolDataSource.setInitialPoolSize(1);
-    poolDataSource.setMinPoolSize(2);
-    poolDataSource.setMaxPoolSize(10);
-    poolDataSource.setLoginTimeout(10);
-    poolDataSource.setInactiveConnectionTimeout(30);
-    poolDataSource.setTimeoutCheckInterval(15);
-    poolDataSource.setValidateConnectionOnBorrow(true);
-    poolDataSource.setConnectionWaitTimeout(60);
-    return poolDataSource;
+    HikariConfig hkConfig = new HikariConfig();
+    hkConfig.setUsername(System.getProperty("dbw_examples.username"));
+    hkConfig.setPassword(System.getProperty("dbw_examples.password"));
+    hkConfig.setJdbcUrl(System.getProperty("dbw_examples.url"));
+    hkConfig.setMaximumPoolSize(16);
+    hkConfig.setMinimumIdle(2);
+    return new HikariDataSource(hkConfig);
   }
 }

@@ -1,145 +1,141 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
-		<artifactId>java_ee_factoryapi</artifactId>
-		<version>2.5.33</version>
-	</parent>
+  <parent>
+    <groupId>com.jr-database-tools.dbworkbench.examples</groupId>
+    <artifactId>java_ee_factoryapi</artifactId>
+    <version>2.5.34</version>
+  </parent>
 
-	<artifactId>java_ee_factoryapi_client</artifactId>
+  <artifactId>java_ee_factoryapi_client</artifactId>
 
-	<dependencies>
-		<!-- jboss -->
-		<dependency>
-			<groupId>org.wildfly</groupId>
-			<artifactId>wildfly-ejb-client-bom</artifactId>
-			<version>26.1.1.Final</version>
-			<type>pom</type>
-			<scope>compile</scope>
-		</dependency>
+  <dependencies>
+    <!-- oracle -->
+    <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ojdbc11</artifactId>
+    </dependency>
 
-		<!-- JUnit 5 -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <!-- jboss -->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly</groupId>
+      <artifactId>wildfly-ejb-client-bom</artifactId>
+      <version>30.0.0.Final</version>
+      <type>pom</type>
+      <scope>compile</scope>
+    </dependency>
 
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-ejb-plugin</artifactId>
-				<configuration>
-					<generateClient>true</generateClient>
-					<ejbVersion>3.2</ejbVersion>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-			</plugin>
+    <!-- JUnit 5 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-			<plugin>
-				<groupId>com.jr-database-tools.dbworkbench</groupId>
-				<artifactId>connectorbuilder-maven-plugin</artifactId>
-				<configuration>
-					<connectorBuilderName>java_ee_factoryapi</connectorBuilderName>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <configuration>
+          <generateClient>true</generateClient>
+          <ejbVersion>3.2</ejbVersion>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>com.jr-database-tools.dbworkbench</groupId>
+        <artifactId>connectorbuilder-maven-plugin</artifactId>
+        <configuration>
+          <connectorBuilderName>java_ee_factoryapi</connectorBuilderName>
           <url>${dbw_examples.url}</url>
           <user>${dbw_examples.username}</user>
           <password>${dbw_examples.password}</password>
           <info>all</info>
-				</configuration>
-			</plugin>
+        </configuration>
+      </plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<executions>
-					<!-- start docker -->
-					<execution>
-						<id>docker-start</id>
-						<phase>process-test-classes</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>docker</executable>
-							<workingDirectory>${project.basedir}</workingDirectory>
-							<arguments>
-								<argument>run</argument>
-								<argument>--name</argument>
-								<argument>java_ee_factoryapi_server</argument>
-								<argument>--rm</argument>
-								<argument>-p</argument>
-								<argument>13456:8080</argument>
-								<argument>-d</argument>
-								<argument>-e</argument>
-								<argument>dbUrl=${dbw_examples.url}</argument>
-								<argument>-e</argument>
-								<argument>dbUsername=${dbw_examples.username}</argument>
-								<argument>-e</argument>
-								<argument>dbPassword=${dbw_examples.password}</argument>
-								<argument>java_ee_factoryapi_server:${project.version}</argument>
-							</arguments>
-						</configuration>
-					</execution>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <!-- start docker -->
+          <execution>
+            <id>docker-compose-start</id>
+            <phase>process-test-classes</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>docker</executable>
+              <workingDirectory>${project.basedir}</workingDirectory>
+              <arguments>
+                <argument>compose</argument>
+                <argument>up</argument>
+                <argument>-d</argument>
+              </arguments>
+            </configuration>
+          </execution>
 
-					<!-- wait until docker started -->
-					<execution>
-						<id>wait-until-docker-is-started</id>
-						<phase>process-test-classes</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>ping</executable>
-							<workingDirectory>${project.basedir}</workingDirectory>
-							<arguments>
-								<argument>localhost</argument>
-								<argument>${ping.count.parameter}</argument>
-								<argument>20</argument>
-							</arguments>
-						</configuration>
-					</execution>
+          <!-- wait until docker started -->
+          <execution>
+            <id>wait-until-docker-is-started</id>
+            <phase>process-test-classes</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>ping</executable>
+              <workingDirectory>${project.basedir}</workingDirectory>
+              <arguments>
+                <argument>localhost</argument>
+                <argument>${ping.count.parameter}</argument>
+                <argument>15</argument>
+              </arguments>
+            </configuration>
+          </execution>
 
-					<!-- stop docker -->
-					<execution>
-						<id>docker-stop</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>docker</executable>
-							<workingDirectory>${project.basedir}</workingDirectory>
-							<arguments>
-								<argument>stop</argument>
-								<argument>java_ee_factoryapi_server</argument>
-							</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+          <!-- stop docker -->
+          <execution>
+            <id>docker-compose-stop</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>docker</executable>
+              <workingDirectory>${project.basedir}</workingDirectory>
+              <arguments>
+                <argument>compose</argument>
+                <argument>down</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

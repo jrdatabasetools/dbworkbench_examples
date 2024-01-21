@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <module xmlns="urn:jboss:module:1.0" name="com.oracle.jdbc">
     <resources>
-        <resource-root path="ojdbc8.jar"/>
-        <resource-root path="ucp.jar"/>
-        <resource-root path="xdb6.jar"/>
+        <resource-root path="ojdbc11.jar"/>
+        <resource-root path="ucp11.jar"/>
     </resources>
     <dependencies>
         <module name="javax.api"/>

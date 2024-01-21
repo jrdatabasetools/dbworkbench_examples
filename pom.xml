@@ -5,11 +5,11 @@
 
   <groupId>com.jr-database-tools.dbworkbench.examples</groupId>
   <artifactId>parent</artifactId>
-  <version>2.5.33</version>
+  <version>2.5.34</version>
   <packaging>pom</packaging>
 
   <description>Examples of using PL/SQL Enterprise Workbench Connector Builders.</description>
-  <inceptionYear>2017-2023</inceptionYear>
+  <inceptionYear>2017-2024</inceptionYear>
 
   <properties>
     <!-- database credentials and configuration parameters -->
@@ -21,9 +21,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- version dependencies -->
-    <connectorbuilder-maven-plugin_version>2.5.33</connectorbuilder-maven-plugin_version>
+    <connectorbuilder-maven-plugin_version>2.5.34</connectorbuilder-maven-plugin_version>
 
-    <com.oracle.database_version>21.10.0.0</com.oracle.database_version>
+    <!-- oracle jdbc driver -->
+    <com.oracle.database.jdbc.ojdbc11-version>23.2.0.0</com.oracle.database.jdbc.ojdbc11-version>
+
+    <!-- HikariCP -->
+    <com.zaxxer.HikariCP-version>5.0.1</com.zaxxer.HikariCP-version>
 
     <javax.annotation-api_version>1.3.2</javax.annotation-api_version>
 
@@ -38,8 +42,8 @@
     <maven-ejb-plugin_version>3.2.1</maven-ejb-plugin_version>
     <maven-dependency-plugin_version>3.3.0</maven-dependency-plugin_version>
 
-    <org.springframework_version>5.3.28</org.springframework_version>
-    <org.springboot_version>2.7.13</org.springboot_version>
+    <org.springframework_version>5.3.29</org.springframework_version>
+    <org.springboot_version>2.7.15</org.springboot_version>
 
     <!-- Java compiler version -->
     <maven.compiler.target>11</maven.compiler.target>
@@ -59,7 +63,6 @@
     <module>batch_stream_processor_factoryapi</module>
     <module>batch_stream_processor_springapi</module>
 
-    <!-- RUNs ONLY WITH JAVA 11 (higher Java versions will fail) -->
     <!-- rmi connector builder -->
     <module>rmi_factoryapi</module>
     <module>rmi_springapi</module>
@@ -70,7 +73,6 @@
     <!-- RUNs ONLY WITH JAVA 11 (higher Java versions will fail) -->
     <!-- jee connector builder -->
     <module>java_ee_factoryapi</module>
-    <module>java_ee_springapi</module>
   </modules>
 
   <dependencyManagement>
@@ -79,22 +81,27 @@
       <dependency>
         <groupId>com.oracle.database.jdbc</groupId>
         <artifactId>ojdbc11</artifactId>
-        <version>${com.oracle.database_version}</version>
+        <version>${com.oracle.database.jdbc.ojdbc11-version}</version>
       </dependency>
       <dependency>
         <groupId>com.oracle.database.jdbc</groupId>
-        <artifactId>ucp</artifactId>
-        <version>${com.oracle.database_version}</version>
+        <artifactId>ucp11</artifactId>
+        <version>${com.oracle.database.jdbc.ojdbc11-version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>${com.zaxxer.HikariCP-version}</version>
       </dependency>
       <dependency>
         <groupId>com.oracle.database.xml</groupId>
         <artifactId>xdb</artifactId>
-        <version>${com.oracle.database_version}</version>
+        <version>${com.oracle.database.jdbc.ojdbc11-version}</version>
       </dependency>
       <dependency>
         <groupId>com.oracle.database.xml</groupId>
         <artifactId>xmlparserv2</artifactId>
-        <version>${com.oracle.database_version}</version>
+        <version>${com.oracle.database.jdbc.ojdbc11-version}</version>
       </dependency>
 
       <!-- Spring -->

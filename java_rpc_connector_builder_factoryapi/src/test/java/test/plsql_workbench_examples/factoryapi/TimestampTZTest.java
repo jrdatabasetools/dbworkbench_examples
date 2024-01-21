@@ -37,9 +37,9 @@ public class TimestampTZTest {
     ZoneId zurich = ZoneId.of("Europe/Zurich");
     ZoneId pacific = ZoneId.of("US/Pacific");
 
-    LocalDateTime now = LocalDateTime.now();
+    LocalDateTime somedayInTheSummer = LocalDateTime.of(2023, 7, 1, 1, 2, 3);
 
-    ZonedDateTime zurichDateTime = ZonedDateTime.of(now, zurich);
+    ZonedDateTime zurichDateTime = ZonedDateTime.of(somedayInTheSummer, zurich);
     ZonedDateTime pacificDateTime = zurichDateTime.withZoneSameInstant(pacific);
     Duration duration = diffBetweenZones(zurichDateTime.getZone(), pacificDateTime.getZone());
 
@@ -61,7 +61,7 @@ public class TimestampTZTest {
   }
 
   private Duration diffBetweenZones(ZoneId z1, ZoneId z2) {
-    LocalDate today = LocalDate.now();
-    return Duration.between(today.atStartOfDay(z1), today.atStartOfDay(z2));
+    LocalDate anyDay = LocalDate.of(2023, 7, 1);
+    return Duration.between(anyDay.atStartOfDay(z1), anyDay.atStartOfDay(z2));
   }
 }

@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
 		<artifactId>parent</artifactId>
-		<version>2.5.33</version>
+		<version>2.5.34</version>
 	</parent>
 
 	<artifactId>rmi_factoryapi</artifactId>

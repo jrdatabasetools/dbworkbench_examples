@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Jan Richter, www.jr-database-tools.com, Switzerland, 2015-2023. All rights reserved.
+ * Copyright (c) Jan Richter, www.jr-database-tools.com, Switzerland, 2015-2024. All rights reserved.
  */
 
 package application;
@@ -50,7 +50,7 @@ public class MainServerSpringApi {
     poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
 
     // environment variables are set in rmi_springapi_client/pom.xml docker execution in docker-start
-    poolDataSource.setURL(System.getenv("db.url"));
+    poolDataSource.setURL(String.format("jdbc:oracle:thin:@%s:1521/xepdb1", System.getenv("db.host")));
     poolDataSource.setUser(System.getenv("db.username"));
     poolDataSource.setPassword(System.getenv("db.password"));
     poolDataSource.setInitialPoolSize(1);

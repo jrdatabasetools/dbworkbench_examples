@@ -23,7 +23,7 @@ public class MainServer {
   {
     PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
     poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
-    poolDataSource.setURL(System.getenv("db.url"));
+    poolDataSource.setURL(String.format("jdbc:oracle:thin:@%s:1521/xepdb1", System.getenv("db.host")));
     poolDataSource.setUser(System.getenv("db.username"));
     poolDataSource.setPassword(System.getenv("db.password"));
     poolDataSource.setInitialPoolSize(1);

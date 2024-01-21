@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.stereotype.Component;
 
+import plsql_workbench_examples.configuration.BaseSpringConfig;
 import service.TypedRefCursorObjectService;
 import transferobject.RefcurObject;
 import transferobject.TypedRefCursorObjectTO;

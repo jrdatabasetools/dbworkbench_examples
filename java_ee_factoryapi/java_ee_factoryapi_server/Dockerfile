@@ -1,4 +1,8 @@
-FROM jboss/wildfly:22.0.1.Final
+FROM jboss/wildfly:24.0.0.Final
+
+# client http remoting configuration does not work after 24.0.0.final  
+#FROM jboss/wildfly:25.0.0.Final
+#FROM quay.io/wildfly/wildfly:30.0.0.Final-jdk11
 
 # user configuration : user dbworkbench100 is configured for remote access (see jave_ee_factoryapi_client/.../wildfly-config.xml)
 RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
@@ -9,9 +13,8 @@ COPY wildfly_configuration/standalone.xml /opt/jboss/wildfly/standalone/configur
 
 # oracle jdbc driver configuration
 COPY wildfly_configuration/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/oracle/jdbc/main/
-COPY target/oracle_jdbc_driver/ojdbc8.jar /opt/jboss/wildfly/modules/system/layers/base/com/oracle/jdbc/main/
-COPY target/oracle_jdbc_driver/ucp.jar /opt/jboss/wildfly/modules/system/layers/base/com/oracle/jdbc/main/
-COPY target/oracle_jdbc_driver/xdb6.jar /opt/jboss/wildfly/modules/system/layers/base/com/oracle/jdbc/main/
+COPY target/oracle_jdbc_driver/ojdbc11.jar /opt/jboss/wildfly/modules/system/layers/base/com/oracle/jdbc/main/
+COPY target/oracle_jdbc_driver/ucp11.jar /opt/jboss/wildfly/modules/system/layers/base/com/oracle/jdbc/main/
 
 # copy application to deployments
 COPY target/java_ee_factoryapi_server.jar /opt/jboss/wildfly/standalone/deployments

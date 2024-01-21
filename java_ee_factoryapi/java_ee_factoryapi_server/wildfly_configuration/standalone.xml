@@ -152,7 +152,7 @@
         <subsystem xmlns="urn:jboss:domain:datasources:6.0">
             <datasources>
                 <datasource jndi-name="java:/datasource/dbw_examples" pool-name="dbw_examples">
-                    <connection-url>${env.dbUrl}</connection-url>
+                    <connection-url>jdbc:oracle:thin:@${env.db.host}:1521/xepdb1</connection-url>
                     <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
                     <driver>oracle</driver>
                     <pool>
@@ -160,8 +160,8 @@
                         <max-pool-size>10</max-pool-size>
                     </pool>
                     <security>
-                        <user-name>${env.dbUsername}</user-name>
-                        <password>${env.dbPassword}</password>
+                        <user-name>${env.db.username}</user-name>
+                        <password>${env.db.password}</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
@@ -551,6 +551,9 @@
         <socket-binding name="txn-status-manager" port="4713"/>
         <outbound-socket-binding name="mail-smtp">
             <remote-destination host="${jboss.mail.server.host:localhost}" port="${jboss.mail.server.port:25}"/>
+        </outbound-socket-binding>
+        <outbound-socket-binding name="remote-ejb">
+            <local-destination socket-binding-ref="http"/>
         </outbound-socket-binding>
     </socket-binding-group>
 </server>

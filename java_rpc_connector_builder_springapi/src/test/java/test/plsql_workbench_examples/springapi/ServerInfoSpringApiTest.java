@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import plsql_workbench_examples.springapi.BaseSpringConfig;
+import plsql_workbench_examples.configuration.BaseSpringConfig;
 import service.ServerInfoService;
 import transferobject.ServerInfoTO;
 

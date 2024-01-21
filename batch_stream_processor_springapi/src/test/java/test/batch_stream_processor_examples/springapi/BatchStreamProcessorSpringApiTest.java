@@ -12,9 +12,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import impl.BatchStreamProcessorServiceImpl;
-import oracle.ucp.jdbc.PoolDataSource;
-import oracle.ucp.jdbc.PoolDataSourceFactory;
 import service.BatchStreamProcessorService;
 import transferobject.BatchStreamProcessorTO;
 
@@ -37,19 +38,12 @@ public class BatchStreamProcessorSpringApiTest {
 
   @Bean
   public DataSource getDataSource() throws Exception {
-    PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
-    poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
-    poolDataSource.setURL(System.getProperty("dbw_examples.url"));
-    poolDataSource.setUser(System.getProperty("dbw_examples.username"));
-    poolDataSource.setPassword(System.getProperty("dbw_examples.password"));
-    poolDataSource.setInitialPoolSize(1);
-    poolDataSource.setMinPoolSize(2);
-    poolDataSource.setMaxPoolSize(10);
-    poolDataSource.setLoginTimeout(10);
-    poolDataSource.setInactiveConnectionTimeout(30);
-    poolDataSource.setTimeoutCheckInterval(15);
-    poolDataSource.setValidateConnectionOnBorrow(true);
-    poolDataSource.setConnectionWaitTimeout(60);
-    return poolDataSource;
+    HikariConfig hkConfig = new HikariConfig();
+    hkConfig.setUsername(System.getProperty("dbw_examples.username"));
+    hkConfig.setPassword(System.getProperty("dbw_examples.password"));
+    hkConfig.setJdbcUrl(System.getProperty("dbw_examples.url"));
+    hkConfig.setMaximumPoolSize(16);
+    hkConfig.setMinimumIdle(2);
+    return new HikariDataSource(hkConfig);
   }
 }

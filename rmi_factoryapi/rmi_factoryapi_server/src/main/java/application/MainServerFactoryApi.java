@@ -11,8 +11,7 @@ import oracle.ucp.jdbc.PoolDataSource;
 import oracle.ucp.jdbc.PoolDataSourceFactory;
 
 public class MainServerFactoryApi {
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
     try {
       Registry registry = LocateRegistry.createRegistry(1099);
 
@@ -24,15 +23,15 @@ public class MainServerFactoryApi {
     }
   }
 
-  public static DataSource getDataSource() throws Exception
-  {
+  public static DataSource getDataSource() throws Exception {
     PoolDataSource poolDataSource = PoolDataSourceFactory.getPoolDataSource();
     poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
 
     // environment variables are set in rmi_factoryapi_client/pom.xml docker execution in docker-start
-    poolDataSource.setURL(System.getenv("db.url"));
+    poolDataSource.setURL(String.format("jdbc:oracle:thin:@%s:1521/xepdb1", System.getenv("db.host")));
     poolDataSource.setUser(System.getenv("db.username"));
     poolDataSource.setPassword(System.getenv("db.password"));
+    
     poolDataSource.setInitialPoolSize(1);
     poolDataSource.setMinPoolSize(2);
     poolDataSource.setMaxPoolSize(10);
