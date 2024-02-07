@@ -1,6 +1,6 @@
 services:
   server:
-    image: rmi_springapi_server:2.5.34
+    image: rmi_springapi_server:2.5.35
     ports:
       - 1098:1098
       - 1099:1099
