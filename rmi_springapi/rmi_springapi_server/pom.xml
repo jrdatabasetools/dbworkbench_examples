@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.jr-database-tools.dbworkbench.examples</groupId>
 		<artifactId>rmi_springapi</artifactId>
-		<version>2.5.35</version>
+		<version>2.5.36</version>
 	</parent>
 
 	<artifactId>rmi_springapi_server</artifactId>

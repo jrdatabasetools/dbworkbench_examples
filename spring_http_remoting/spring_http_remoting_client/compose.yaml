@@ -1,6 +1,6 @@
 services:
   server:
-    image: spring_http_remoting_server:2.5.35
+    image: spring_http_remoting_server:2.5.36
     ports:
       - 12345:8080
     environment:
