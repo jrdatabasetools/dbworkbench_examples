@@ -14,8 +14,8 @@ All examples contain a normal executable main Java program and a JUnit test case
 
 ### Oracle Database XE 21c
 
-Run **run_oracle.sh (bash)**, **run_oracle.ps1 (powershell)** or **run_oracle.cmd (Windows command line)** from the command line of the project root to start a preconfigured database. 
-
+- **Windows** : Run **run_oracle.cmd** from the command line of the project root to start a preconfigured database (git-bash will not work).
+- **Linux/OSX** : Run **run_oracle.sh** from the command line of the project root to start a preconfigured database.
 - An Oracle 21c XE (Express Edition) will be downloaded as Docker image.
 - All Sql scripts in the folder **ora_db_startup** will be executed after startup.
 - About 5 GB will be downloaded and require about 12 GB in the docker registry.
@@ -69,6 +69,7 @@ The server and the client can be run as Java main programs without using Docker 
 - Running single scripts are not possible - to create a table and a user you have to use other tools like SQL-Developer.
 
 ## Running all or single JUnit Tests
+- Run the shell in commands in following tested environments : shell (OSX/Mac/Linux) or git-bash (Windows).
 - Java 11 or higher required.
 - These examples are tested with Maven 3.6.3 (at least Maven 3.6.x should work).
 - To run Client/Server tests like RMI, JEE, Spring-Remoting a running Docker installation is required. 

@@ -17,4 +17,10 @@ begin
   return c;
 end job1;
 
+function a return number
+is
+begin
+  return 1;
+end ;
+
 end batch_stream_processor;
