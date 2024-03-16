@@ -1,6 +1,6 @@
 services:
   server:
-    image: java_ee_factoryapi_server:2.5.37
+    image: java_ee_factoryapi_server:2.5.38
     ports:
       - 13456:8080
     environment:
