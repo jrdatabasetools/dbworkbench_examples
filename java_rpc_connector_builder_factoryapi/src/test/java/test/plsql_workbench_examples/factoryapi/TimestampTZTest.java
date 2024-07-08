@@ -31,6 +31,7 @@ public class TimestampTZTest {
 
     assertEquals(ZonedDateTime.of(LocalDateTime.of(2015, 8, 5, 1, 0, 0), ZoneId.of("US/Pacific")),
                  service.fncTimestampWtz("8/5/2015 1:00 AM US/Pacific", "MM/DD/YYYY HH:mi AM TZR"));
+    
     assertEquals(ZonedDateTime.of(2015, 8, 5, 1, 0, 0, 0, ZoneId.of("US/Pacific")).withZoneSameInstant(defaultZoneId),
                  service.fncTimestampWltz("8/5/2015 1:00 AM US/Pacific", "MM/DD/YYYY HH:mi AM TZR"));
 
