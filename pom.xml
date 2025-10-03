@@ -5,7 +5,7 @@
 
   <groupId>com.jr-database-tools.dbworkbench.examples</groupId>
   <artifactId>examples_java11</artifactId>
-  <version>25.1.2</version>
+  <version>25.2.0</version>
   <packaging>pom</packaging>
 
   <description>Examples of using PL/SQL Enterprise Workbench Connector Builders.</description>
@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- version dependencies -->
-    <connectorbuilder-maven-plugin_version>25.1.2</connectorbuilder-maven-plugin_version>
+    <connectorbuilder-maven-plugin_version>25.2.0</connectorbuilder-maven-plugin_version>
 
     <!-- oracle jdbc driver -->
     <com.oracle.database.jdbc.ojdbc11-version>23.6.0.24.10</com.oracle.database.jdbc.ojdbc11-version>

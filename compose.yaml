@@ -1,6 +1,6 @@
 services:
   oracle_db:
-    image: dbw_ora_xe_21_3:25.1.2
+    image: dbw_ora_xe_21_3:25.2.0
     networks:
       - oracle_db_net
     ports:

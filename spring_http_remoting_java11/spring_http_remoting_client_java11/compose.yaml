@@ -1,6 +1,6 @@
 services:
   server:
-    image: spring_http_remoting_server_java11:25.1.2
+    image: spring_http_remoting_server_java11:25.2.0
     ports:
       - 8080:8080
     networks:
