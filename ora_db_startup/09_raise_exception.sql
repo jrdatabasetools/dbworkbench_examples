@@ -4,7 +4,7 @@ alter session set current_schema = dbw_examples;
 create or replace procedure raise_exception
 /**
  * Demonstration of handling user and runtime PL/SQL exceptions.<br>
- * Just have a look at the stacktrace. The call hierarchy of the java methods and PL/SQL stored procedures 
+ * Just have a look at the stacktrace. The call hierarchy of the java methods and PL/SQL programs 
  * are displayed with line numbers.
  */
 is

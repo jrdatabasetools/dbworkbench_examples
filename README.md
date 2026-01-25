@@ -10,9 +10,9 @@ Install PL/SQL Connector Builder Maven Plugin from : https://www.jr-database-too
 
 ### Installed Software
 
-- Java 11
-- Docker 
-- Maven 3.x
+- Java 11-25
+- Maven 3.9.x
+- Podman
 
 ### Oracle Database XE 21c
 
@@ -46,18 +46,10 @@ The Batch/Stream processing demonstrates the Batch/Stream Processing PL/SQL Conn
 - **batch_stream_processor_factoryapi**: Batch/Stream processing demo using a PL/SQL strong/typed cursor and Java Streams using the FactoryApi.
 - **batch_stream_processor_springapi**: Same as **batch_stream_processor_factoryapi** using the SpringApi.
 
-## Client/Server-Examples
-All Client/Server-Examples demonstrate PL/SQL Connector Builder generating a client and server part. 
-
-The JUnit tests are creating and running the server parts in a Docker container. The JUnit client parts are calling the server.
-
-The server and the client can be run as Java main programs without using Docker (JavaEE client only).
+## Java-EE-Example
+Generates the EJBs as service wrapper to call to database procedures.
 
 - **java_ee_factoryapi**: Example of the JavaEE PL/SQL Connector Builder for remote calling EJB Beans containing the generated Java access code for PL/SQL procedures using the FactoryApi.
-- **java_ee_springapi**: Same as **java_ee_factoryapi** using the SpringApi.
-- **rmi_factoryapi**: Example of the RMI PL/SQL Connector Builder for remote calling RMI Beans containing the generated Java access code for PL/SQL procedures using the FactoryApi.
-- **rmi_springapi**: Same as **rmi_factoryapi** using the SpringApi.
-- **spring_http_remoting**: Example of the Spring-HTTP-Remoting PL/SQL Connector Builder for remote calling Java classes containing the generated Java access code for PL/SQL procedures using the SpringApi and FactoryApi.
 
 ## 3 Ways to run these Examples
 1. Using the PL/SQL Enterprise Workbench
@@ -87,4 +79,3 @@ The server and the client can be run as Java main programs without using Docker 
 - Configure the Oracle database credentials and configuration parameter in the parent **pom.xml**.
 - A Maven run to generate the Java access is required, so run **mvn clean package -DskipTests=true**. The Java access code will be generated into directory **./target/generated-sources/connector**.
 - Now you can use your favorite Java IDE to run each example.
-- You don't need Docker. Start the server program and after that the run client module.

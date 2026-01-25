@@ -1,6 +1,6 @@
 # SQL
 
-You can create all user, tables and PL/SQL types and stored procedures at once or only for individual modules.
+You can create all user, tables and PL/SQL types and programs at once or only for individual modules.
 
 In each module exists a SQL directory containing the used PL/SQL types and procedures.
 
@@ -9,7 +9,7 @@ In each module exists a SQL directory containing the used PL/SQL types and proce
 - **_create_user**: A SQL script creates the user **DBW_EXAMPLES**.
 - **_table**: A SQL script creates a table for bulk processing.
 
-## PL/SQL User Defined Types and Stored Procedures
+## PL/SQL User Defined Types and Programs
 
 - **batch_stream_processor**: Package **BATCH_STREAM_PROCESSOR** for Batch/Stream examples.
 - **binary_types**: Function **BINARY_TYPES** for data types examples.
